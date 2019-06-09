@@ -1,0 +1,324 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "35ec0ec99ee8ff6f249ee04ffdfaea5b",
+    "entities": [
+      {
+        "tableName": "groups",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`g_name` TEXT NOT NULL, `g_tags` TEXT NOT NULL, `g_description` TEXT NOT NULL, PRIMARY KEY(`g_name`))",
+        "fields": [
+          {
+            "fieldPath": "name",
+            "columnName": "g_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tags",
+            "columnName": "g_tags",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "g_description",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "g_name"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "users",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`u_name` TEXT NOT NULL, PRIMARY KEY(`u_name`))",
+        "fields": [
+          {
+            "fieldPath": "name",
+            "columnName": "u_name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "u_name"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "threads",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`t_id` INTEGER NOT NULL, `t_title` TEXT NOT NULL, `group_name` TEXT NOT NULL, PRIMARY KEY(`t_id`), FOREIGN KEY(`group_name`) REFERENCES `groups`(`g_name`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "t_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "t_title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "groupName",
+            "columnName": "group_name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "t_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_threads_t_id",
+            "unique": false,
+            "columnNames": [
+              "t_id"
+            ],
+            "createSql": "CREATE  INDEX `index_threads_t_id` ON `${TABLE_NAME}` (`t_id`)"
+          },
+          {
+            "name": "index_threads_t_title",
+            "unique": false,
+            "columnNames": [
+              "t_title"
+            ],
+            "createSql": "CREATE  INDEX `index_threads_t_title` ON `${TABLE_NAME}` (`t_title`)"
+          },
+          {
+            "name": "index_threads_group_name",
+            "unique": false,
+            "columnNames": [
+              "group_name"
+            ],
+            "createSql": "CREATE  INDEX `index_threads_group_name` ON `${TABLE_NAME}` (`group_name`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "groups",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "group_name"
+            ],
+            "referencedColumns": [
+              "g_name"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "posts",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`p_id` INTEGER NOT NULL, `p_timestamp` INTEGER NOT NULL, `p_content` TEXT NOT NULL, `p_is_original_post` INTEGER NOT NULL, `thread_id` INTEGER NOT NULL, `user_name` TEXT NOT NULL, PRIMARY KEY(`p_id`), FOREIGN KEY(`thread_id`) REFERENCES `threads`(`t_id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`user_name`) REFERENCES `users`(`u_name`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "p_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "p_timestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "content",
+            "columnName": "p_content",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isOriginalPost",
+            "columnName": "p_is_original_post",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "threadId",
+            "columnName": "thread_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userName",
+            "columnName": "user_name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "p_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_posts_p_id",
+            "unique": false,
+            "columnNames": [
+              "p_id"
+            ],
+            "createSql": "CREATE  INDEX `index_posts_p_id` ON `${TABLE_NAME}` (`p_id`)"
+          },
+          {
+            "name": "index_posts_thread_id",
+            "unique": false,
+            "columnNames": [
+              "thread_id"
+            ],
+            "createSql": "CREATE  INDEX `index_posts_thread_id` ON `${TABLE_NAME}` (`thread_id`)"
+          },
+          {
+            "name": "index_posts_user_name",
+            "unique": false,
+            "columnNames": [
+              "user_name"
+            ],
+            "createSql": "CREATE  INDEX `index_posts_user_name` ON `${TABLE_NAME}` (`user_name`)"
+          },
+          {
+            "name": "index_posts_p_timestamp",
+            "unique": false,
+            "columnNames": [
+              "p_timestamp"
+            ],
+            "createSql": "CREATE  INDEX `index_posts_p_timestamp` ON `${TABLE_NAME}` (`p_timestamp`)"
+          },
+          {
+            "name": "index_posts_p_content",
+            "unique": false,
+            "columnNames": [
+              "p_content"
+            ],
+            "createSql": "CREATE  INDEX `index_posts_p_content` ON `${TABLE_NAME}` (`p_content`)"
+          },
+          {
+            "name": "index_posts_p_is_original_post",
+            "unique": false,
+            "columnNames": [
+              "p_is_original_post"
+            ],
+            "createSql": "CREATE  INDEX `index_posts_p_is_original_post` ON `${TABLE_NAME}` (`p_is_original_post`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "threads",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "thread_id"
+            ],
+            "referencedColumns": [
+              "t_id"
+            ]
+          },
+          {
+            "table": "users",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "user_name"
+            ],
+            "referencedColumns": [
+              "u_name"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "group_user_join",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`group_name` TEXT NOT NULL, `user_name` TEXT NOT NULL, PRIMARY KEY(`group_name`, `user_name`), FOREIGN KEY(`group_name`) REFERENCES `groups`(`g_name`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`user_name`) REFERENCES `users`(`u_name`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "groupName",
+            "columnName": "group_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userName",
+            "columnName": "user_name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "group_name",
+            "user_name"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_group_user_join_user_name",
+            "unique": false,
+            "columnNames": [
+              "user_name"
+            ],
+            "createSql": "CREATE  INDEX `index_group_user_join_user_name` ON `${TABLE_NAME}` (`user_name`)"
+          },
+          {
+            "name": "index_group_user_join_group_name",
+            "unique": false,
+            "columnNames": [
+              "group_name"
+            ],
+            "createSql": "CREATE  INDEX `index_group_user_join_group_name` ON `${TABLE_NAME}` (`group_name`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "groups",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "group_name"
+            ],
+            "referencedColumns": [
+              "g_name"
+            ]
+          },
+          {
+            "table": "users",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "user_name"
+            ],
+            "referencedColumns": [
+              "u_name"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"35ec0ec99ee8ff6f249ee04ffdfaea5b\")"
+    ]
+  }
+}

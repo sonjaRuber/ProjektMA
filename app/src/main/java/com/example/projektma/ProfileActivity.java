@@ -1,16 +1,14 @@
 package com.example.projektma;
 
-import android.content.ClipData;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 
 
 public class ProfileActivity extends AppCompatActivity {
@@ -51,7 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
         ;
     }
 
-    private void setSupportActionBar(Toolbar myToolbar) {
+    public void setSupportActionBar(Toolbar myToolbar) {
     }
 
     /**

@@ -8,7 +8,7 @@
     android:gravity="center"
     tools:context=".ProfileActivity">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         style="@style/HeaderBar"
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         android:layout_marginTop="0dp"
         android:layout_marginBottom="630dp"
         android:minHeight="100dp">
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <Button
         android:id="@+id/groupButton"
