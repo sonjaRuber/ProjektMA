@@ -8,19 +8,24 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+    public static Activity mainActivity;
 
     Button mainRegisterBtn, mainLoginBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mainActivity = this;
 
-        //init views
+        // init views
         mainRegisterBtn = findViewById(R.id.register_btn);
         mainLoginBtn = findViewById(R.id.login_btn);
 
-        //handle login
+        /**
+         * onclicklistener fuer den mainregister button
+         */
         mainRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * onclicklistener fuer mainlogin button
+         */
         mainLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

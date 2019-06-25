@@ -3,45 +3,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.projektma">
 
-    <application
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+    <uses-permission android:name="android.permission.INTERNET" />
 
-        <activity android:name=".ProfileActivity">
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning,WrongManifestParent">
+
+
+        <activity
+            android:name=".PostActivity">
+
+        </activity>
+
+
+        <!-- Group Activity -->
+        <activity
+            android:name=".GroupActivity"
+            android:label="string/GroupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="com.package.name.ProfileActivity"/>
+                <action android:name="com.package.name.GroupActivity" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+
+        <!-- Profile Activity -->
+        <activity
+            android:name=".ProfileActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.package.name.ProfileActivity" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- Register Activity -->
         <activity android:name=".RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="com.package.name.RegisterActivity"/>
+                <action android:name="com.package.name.RegisterActivity" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity android:name=".LoginActivity"
-            android:label="string/LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <action android:name="com.package.name.LoginActivity"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".MainActivity">
+        </activity> <!-- Login Activity -->
+        <activity
+            android:name=".LoginActivity"
+            android:label="LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.package.name.LoginActivity" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".MainActivity"
+            android:label="string/MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.package.name.MainActivity" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--Thread Activity-->
+        <activity
+            android:name=".ThreadActivity"
+            android:label="string/MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.package.name.ThreadActivity" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
+
 </manifest>

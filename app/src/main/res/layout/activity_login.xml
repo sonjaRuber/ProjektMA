@@ -18,6 +18,26 @@
         android:textColor="@color/colorBlack"
         android:textSize="25sp"/>
 
+    <TextView
+        android:id="@+id/loginFailure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250sp"
+        android:text="@string/login_failed
+"
+        android:textAlignment="center"
+        android:textColor="@color/colorBlack"
+        android:textSize="12sp" />
+
+    <!--LOADING CIRCLE-->
+    <ProgressBar
+        android:id="@+id/loadingCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="235sp"
+        android:indeterminate="true" />
+
     <!--EditText: Input Username oder email-->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -58,6 +78,7 @@
         android:layout_below="@id/passwordTIL"
         android:layout_centerHorizontal="true"
         style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:background="@color/colorAccent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

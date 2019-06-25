@@ -22,43 +22,17 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_below="@id/toolbar">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewThreadList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15sp" />
         </FrameLayout>
-
-        <Button
-            android:id="@+id/groupButton"
-            style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:background="@color/colorAccent"
-            android:layout_width="261dp"
-            android:layout_height="135dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginStart="85dp"
-            android:layout_marginLeft="85dp"
-            android:layout_marginEnd="85dp"
-            android:layout_marginRight="85dp"
-            android:layout_marginBottom="30dp"
-            android:text="@string/gruppe_name"
-            android:textSize="20dp">
-        </Button>
-
-        <Button
-            android:id="@+id/groupButton2"
-            style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:background="@color/colorAccent"
-            android:layout_width="261dp"
-            android:layout_height="135dp"
-            android:layout_below="@id/groupButton"
-            android:layout_marginStart="85dp"
-            android:layout_marginLeft="85dp"
-            android:layout_marginEnd="85dp"
-            android:layout_marginRight="85dp"
-            android:text="@string/gruppe_name1"
-            android:textSize="20dp">
-        </Button>
-
     </RelativeLayout>
 
 
-    <!--Button to join a Group - Button yet without function -->
+    <!-- bottom bar -->
     <android.support.design.bottomappbar.BottomAppBar
         android:layout_width="match_parent"
         android:layout_gravity="bottom"
@@ -67,6 +41,8 @@
         app:backgroundTint="@color/colorAccent"
         android:layout_height="?attr/actionBarSize"/>
 
+
+    <!-- Button um auf Thread zu posten  -->
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         app:fabSize="normal"
@@ -76,3 +52,4 @@
         android:layout_height="wrap_content"/>
 
 </android.support.design.widget.CoordinatorLayout>
+

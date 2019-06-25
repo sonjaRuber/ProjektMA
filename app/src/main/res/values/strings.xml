@@ -2,4 +2,18 @@
     <string name="app_name">ProjektMA</string>
 
     <string name="gruppe_name">Gruppe_1</string>
+
+    <string name="gruppe_name1">Gruppe_2</string>
+
+    <string name="Gruppen_Name">GruppenName</string>
+
+    <string name="username">UserName</string>
+
+    <string name="thread1">Thread_1</string>
+
+    <string name="thread2">Thread_2</string>
+    <string name="Thread_Name">ThreadName</string>
+
+    <string name="login_failed">Wrong username or password. Please try again.</string>
+    <string name="textViewStringTitle">textViewStringTitle</string>
 </resources>
